@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Music.Models.Artist>
+
+@{
+    ViewBag.Title = "ShowSomeArtists";
+}
+
+<h2>ShowSomeAlbums</h2>
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+    </tr>
+}
+
+</table>

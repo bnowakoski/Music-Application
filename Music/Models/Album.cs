@@ -16,6 +16,8 @@ namespace Music.Models
         public int GenreID { get; set; }
         [Display(Name = "Genre")]
         public Genre Genre { get; set; }
+
+        [Range(0.01, 100.0, ErrorMessage = "Not a correct price")]
         public decimal Price { get; set; }
 
         public int ArtistID { get; set; }

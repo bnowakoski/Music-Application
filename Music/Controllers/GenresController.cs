@@ -32,8 +32,18 @@ namespace Music.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "GenreID, Name")] Genre genre)
         {
-            if (ModelState.IsValid)
+            if (db.Genres.Any(ac => ac.Name.Equals(genre.Name)))
             {
+                ModelState.AddModelError("GenreError", "Genre already exisits" );
+               
+                
+                return View("Create");
+
+
+            }
+            else if (ModelState.IsValid)
+            {
+                ViewBag.NameError = false;
                 db.Genres.Add(genre);
                 db.SaveChanges();
                 return RedirectToAction("Index");

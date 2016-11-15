@@ -1,12 +1,14 @@
 ﻿@model Music.Models.Album
 
 @{
+
     ViewBag.Title = "Create";
 }
 <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 
 
 <h2>Create</h2>
+@Html.ValidationSummary()
 
 @using (Html.BeginForm()) 
 {
@@ -21,16 +23,18 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                @Html.ValidationMessage("AlbumError", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.GenreID, "Genre", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("GenreID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.GenreID, "", new { @class = "text-danger" })
+       
+            <div class="form-group">
+                @Html.LabelFor(model => model.GenreID, "Genre", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("GenreID",null, "Select Genre", htmlAttributes: new { @class = "form-control" })Add a Genre that is not listed: @Html.EditorFor(m => m.Genre.Name)
+                    @Html.ValidationMessage("GenreError", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,11 +47,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ArtistID, "Artist", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ArtistID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ArtistID, "", new { @class = "text-danger" })
+                @Html.DropDownList("ArtistID", null, "Select Artist", htmlAttributes: new { @class = "form-control" })Add an Artist that is not listed: @Html.EditorFor(m => m.Artist.Name) 
+                @Html.ValidationMessage("ArtistError", new { @class = "text-danger" })
             </div>
         </div>
 
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

@@ -6,46 +6,54 @@
 
 <h2>Index</h2>
 <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Artist)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    @using (Html.BeginForm())
+    { <p>@Html.TextBox("searchString") <input type="submit" value="Search" /></p> }
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Artist.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
-        </td>
-    </tr>
-}
+    <table class="table">
 
+    <thead>
+        <tr>
+            <th>@Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.AlbumNameSortParam })</th>
+            <th>@Html.ActionLink("Artist", "Index", new { sortOrder = ViewBag.ArtistNameSortParam })</th>
+            <th>@Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreNameSortParam })</th>
+            <th>@Html.ActionLink("Price", "Index", new { sortOrder = ViewBag.PriceSortParam })</th>
+            <th>@Html.ActionLink("Likes", "Index", new { sortOrder = ViewBag.LikesSortParam })</th>
+        </tr>
+    </thead>
+    @foreach (var album in Model)
+    {
+        <tr>
+            <td>@album.Title</td>
+            <td>@album.Artist.Name</td>
+            <td>@album.Genre.Name</td>
+            <td>@album.Price</td>
+            <td>@album.Likes</td>
+           
+
+            <td>
+                 @using (Html.BeginForm("Likes", "Albums", new {id = album.AlbumID}, FormMethod.Post))
+                 {
+                    <button type="submit" id=@album.AlbumID >Like</button>
+                 }
+
+
+
+
+
+                    @Html.ActionLink("Edit", "Edit", new { id = album.AlbumID }) |
+                    @Html.ActionLink("Details", "Details", new { id = album.AlbumID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = album.AlbumID })
+</td>
+            
+        </tr>
+                   }
+
+
+       
 </table>

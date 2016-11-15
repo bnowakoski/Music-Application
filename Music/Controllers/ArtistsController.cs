@@ -32,7 +32,14 @@ namespace Music.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ArtistID, Name, Bio")] Artist artist)
         {
-            if (ModelState.IsValid)
+            if (db.Artists.Any(ac => ac.Name.Equals(artist.Name)))
+            {
+                ModelState.AddModelError("ArtistError", "Artist already exisits");
+
+
+                return View("Create");
+            }
+               else if (ModelState.IsValid)
             {
                 db.Artists.Add(artist);
                 db.SaveChanges();

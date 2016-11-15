@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
+using System.Web.Mvc;
 namespace Music.Models
 {
     public class Album
@@ -14,15 +14,17 @@ namespace Music.Models
         public string Title { get; set; }
         
         public int GenreID { get; set; }
-        [Display(Name = "Genre")]
+       // [Display(Name = "Genre")]
         public Genre Genre { get; set; }
 
         [Range(0.01, 100.0, ErrorMessage = "Not a correct price")]
         public decimal Price { get; set; }
 
         public int ArtistID { get; set; }
-        [Display(Name = "Artist")]
+        //[Display(Name = "Artist")]
         public Artist Artist { get; set; }
+
+        public int Likes { get; set; }
 
     }
 }

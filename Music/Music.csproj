@@ -157,6 +157,10 @@
     <Compile Include="Migrations\201610252222303_new.Designer.cs">
       <DependentUpon>201610252222303_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611092347271_Migrate.cs" />
+    <Compile Include="Migrations\201611092347271_Migrate.Designer.cs">
+      <DependentUpon>201611092347271_Migrate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -245,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610252222303_new.resx">
       <DependentUpon>201610252222303_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611092347271_Migrate.resx">
+      <DependentUpon>201611092347271_Migrate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

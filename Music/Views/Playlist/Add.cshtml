@@ -1,0 +1,23 @@
+﻿@model Music.ViewModel.AddAlbumPlaylistViewModel
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+<h2>Add an Album @Html.DisplayFor(m => m.playlistName)</h2>
+
+@using (Html.BeginForm("Add", "Playlist", FormMethod.Post))
+{
+<div class="form-group">
+   
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m.albumID, (SelectList)ViewBag.albumList, "Choose an album to add", htmlAttributes: new { @class = "form-control" })
+  
+        @Html.HiddenFor(model => model.playlistID)
+       
+        @Html.HiddenFor(model => model.ownerID)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</div>
+}

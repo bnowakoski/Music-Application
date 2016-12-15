@@ -1,0 +1,40 @@
+﻿@model Music.ViewModel.RegisterViewModel
+
+@{ViewData["Title"] = "Register"; }
+
+
+
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+<h2>Register</h2>
+<h5>Create a new account</h5>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        
+
+        <div class="editor-label">
+            Email:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+           Password:
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+           Confirm Passowrd:
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div> <p>
+            <input type="submit" value="Register" />
+        </p>
+    </fieldset>}

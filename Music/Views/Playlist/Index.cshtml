@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Music.Models.Playlist>
+
+
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+<h2>Playlists for: @User.Identity.Name (member since @ViewBag.Date.ToString("MMM dd, yyyy"))</h2>
+<p>
+   @Html.ActionLink("Create Playlist", "Create")
+</p>
+<br />
+Name
+<table class="table">
+    @foreach (var playlist in Model)
+    {
+      
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => playlist.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Add", "Add", new { id = playlist.PlaylistID })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = playlist.PlaylistID })
+            </td>
+           
+            <td>
+                 @Html.ActionLink("Edit", "Edit", new { id = playlist.PlaylistID })
+           </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = playlist.PlaylistID })
+            </td>
+            
+        </tr>
+    }
+</table>

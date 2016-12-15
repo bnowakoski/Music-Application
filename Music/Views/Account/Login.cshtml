@@ -1,0 +1,24 @@
+﻿@model Music.ViewModel.LoginViewModel
+
+@{ViewData["Title"] = "Login"; }
+
+
+<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+<h2>Log in</h2>
+
+
+
+
+
+
+@Html.ValidationSummary(true)
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <p>
+        <button type="submit">Log In</button>
+    </p>
+}
+
+<p>Don't have an account? <a href="@Url.Action("Register")">Register</a></p>

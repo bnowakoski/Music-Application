@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Music.Models
 {
-   
+
     public class Genre
     {
         public int GenreID { get; set; }

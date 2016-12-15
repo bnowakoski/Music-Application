@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 namespace Music.Models
 {
     public class Album
@@ -25,6 +21,6 @@ namespace Music.Models
         public Artist Artist { get; set; }
 
         public int Likes { get; set; }
-
+        public List<PlaylistAlbums> Playlists { get; set; }
     }
 }
